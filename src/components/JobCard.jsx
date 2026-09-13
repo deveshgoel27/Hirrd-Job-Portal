@@ -68,8 +68,7 @@ const JobCard = ({
 
 
     return (
-        <div className=" sm:mr-0">
-    <Card className=" ml-10 sm:ml-20 mt-5 flex flex-col   ">
+    <Card className="mt-5 flex flex-col">
          {loadingDeleteJob && (
         <BarLoader className="mt-4" width={"100%"} color="#36d7b7" />
       )}
@@ -119,7 +118,6 @@ const JobCard = ({
              )}
         </CardFooter>
     </Card>
-    </div>
 )}
 
 export default JobCard;

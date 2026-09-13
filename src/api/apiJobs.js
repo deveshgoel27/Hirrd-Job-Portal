@@ -30,11 +30,12 @@ export async function getJobs(token, { location, company_id, searchQuery }) {
 }
 
 // Read Saved Jobs
-export async function getSavedJobs(token) {
+export async function getSavedJobs(token, { user_id }) {
   const supabase = await supabaseClient(token);
   const { data, error } = await supabase
     .from("saved_jobs")
-    .select("*, job: jobs(*, company: companies(name,logo_url))");
+    .select("*, job: jobs(*, company: companies(name,logo_url))")
+    .eq("user_id", user_id);
 
   if (error) {
     console.error("Error fetching Saved Jobs:", error);
@@ -74,7 +75,8 @@ export async function saveJob(token, { alreadySaved }, saveData) {
     const { data, error: deleteError } = await supabase
       .from("saved_jobs")
       .delete()
-      .eq("job_id", saveData.job_id);
+      .eq("job_id", saveData.job_id)
+      .eq("user_id", saveData.user_id);
 
     if (deleteError) {
       console.error("Error removing saved job:", deleteError);

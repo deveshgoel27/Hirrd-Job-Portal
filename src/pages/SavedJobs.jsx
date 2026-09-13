@@ -8,13 +8,15 @@ import { BarLoader } from "react-spinners";
 
 const SavedJobs = () => {
 
-  const { isLoaded } = useUser();
+  const { isLoaded, user } = useUser();
 
   const {
     loading: loadingSavedJobs,
     data: savedJobs,
     fn: fnSavedJobs,
-  } = useFetch(getSavedJobs);
+  } = useFetch(getSavedJobs, {
+    user_id: user?.id,
+  });
 
   useEffect(() => {
     if (isLoaded) {
@@ -33,23 +35,24 @@ const SavedJobs = () => {
       </h1>
 
       {loadingSavedJobs === false && (
-        <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {savedJobs?.length ? (
-            savedJobs?.map((saved) => {
+        savedJobs?.length ? (
+          <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {savedJobs.map((saved) => {
               return (
                 <JobCard
                   key={saved.id}
                   job={saved?.job}
                   onJobSaved={fnSavedJobs}
-                  // onJobAction={fnSavedJobs}
                   savedInit={true}
                 />
               );
-            })
-          ) : (
-            <div>No Saved Jobs 👀</div>
-          )}
-        </div>
+            })}
+          </div>
+        ) : (
+          <div className="text-center text-lg text-gray-400 mt-16">
+            No Saved Jobs Yet 👀
+          </div>
+        )
       )}
     </div>
   )

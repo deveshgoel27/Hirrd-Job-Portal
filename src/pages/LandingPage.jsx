@@ -13,11 +13,9 @@ import {
 } from "@/components/ui/accordion";
 const LandingPage = () => {
   return (
-        // mr-15 mewns it is for mobile screen and all and sm:mr-0 for our normal website on desktop.
-    <main className=" gardient-title flex flex-col gap-10 sm:gap-20 py-10 sm:py-20 mr-15 sm:mr-0">
+        <main className=" gardient-title flex flex-col gap-10 sm:gap-20 py-10 sm:py-20">
       <section className="text-center">
-        {/* mr-11 */}
-        <h1 className="gardient-title flex flex-col items-center justify-center gardient-title text-4xl  font-extrabold sm:text-6xl lg:text-8xl tracking-tighter py-3 ml-15">
+        <h1 className="gardient-title flex flex-col items-center justify-center gardient-title text-4xl  font-extrabold sm:text-6xl lg:text-8xl tracking-tighter py-3">
           Find Your Dream Job{" "}
           <span className="gardient-title flex items-center gap-2 sm:gap-6 ">
             and get{" "}
@@ -28,15 +26,14 @@ const LandingPage = () => {
             />
           </span>
         </h1>
-        {/* mr-11 */}
-        <p className="text-gray-300  sm:mt-4 text-xs sm:text-xl ml-15">
+        <p className="text-gray-300  sm:mt-4 text-xs sm:text-xl">
           Explore thousands of job listings or find the perfect candidate
         </p>
       </section>
 
 
       {/* Buttons */}
-      <div className="flex gap-6 justify-center ml-20">
+      <div className="flex gap-6 justify-center">
         <Link to={"/jobs"}>
           <Button variant="blue" size="xl">
             Find Jobs
@@ -57,7 +54,7 @@ const LandingPage = () => {
             delay: 2000,
           }),
         ]}
-        className="w-full py-10 ml-9"
+        className="w-full py-10"
       >
         <CarouselContent className="flex gap-3 sm:gap-20 items-center">
           {companies.map(({ name, id, path }) => (
@@ -73,10 +70,10 @@ const LandingPage = () => {
       </Carousel>
 
       {/* banner */}
-      <img src="/banner.jpeg" className="w-full ml-8" />
+      <img src="/banner.jpeg" className="w-full" />
 
       {/* cards */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-4 ml-8">
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card>
           <CardHeader>
             <CardTitle className="font-bold">For Job Seekers</CardTitle>
@@ -97,7 +94,7 @@ const LandingPage = () => {
 
       {/* Accordion */}
 
-      <Accordion type="multiple" className="w-full ml-8">
+      <Accordion type="multiple" className="w-full">
         {faqs.map((faq, index) => (
           <AccordionItem key={index} value={`item-${index + 1}`}>
             <AccordionTrigger>{faq.question}</AccordionTrigger>

@@ -81,8 +81,8 @@ const JobListing = () => {
   }
 
   return (
-    <div className="sm:mr-0 mr-15">
-      <h1 className="gradient-title font-extrabold text-6xl sm:text-7xl text-center ml-20 sm:ml-0  pb-10 sm:mt-0 mt-10">
+    <div>
+      <h1 className="gradient-title font-extrabold text-6xl sm:text-7xl text-center pb-10 sm:mt-0 mt-10">
         Latest Jobs
       </h1>
 
@@ -96,14 +96,14 @@ const JobListing = () => {
           type="text"
           placeholder="Search Jobs by Title.."
           name="search-query"
-          className="h-full flex-1 ml-10 sm:ml-20 px-4 text-md"
+          className="h-full flex-1 px-4 text-md"
         />
         <Button type="submit" className="h-full  sm:w-28 " variant="blue">
           Search
         </Button>
       </form>
 
-      <div className="flex flex-col sm:flex-row gap-3  ml-10 sm:ml-20">
+      <div className="flex flex-col sm:flex-row gap-3">
         <Select value={location} onValueChange={(value) => setLocation(value)}>
           <SelectTrigger>
             <SelectValue placeholder="Filter by Location"/>
@@ -154,9 +154,9 @@ const JobListing = () => {
       )}
 
       {loadingJobs === false && (
-        <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-4  ">
-          {jobs?.length ? (
-            jobs.map((job) => {
+        jobs?.length ? (
+          <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {jobs.map((job) => {
               return (
                 <JobCard
                   key={job.id}
@@ -164,11 +164,13 @@ const JobListing = () => {
                   savedInit={job?.saved?.length > 0}
                 />
               );
-            })
-          ) : (
-            <div className="text-center">No Jobs Found 😢</div>
-          )}
-        </div>
+            })}
+          </div>
+        ) : (
+          <div className="text-center text-lg text-gray-400 mt-16">
+            No Jobs Found 😢
+          </div>
+        )
       )}
 
          {/* pagination 

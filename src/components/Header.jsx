@@ -26,14 +26,14 @@ const Header = () => {
 
   return (
     <>
-      <nav className='py-4 flex justify-between items-center ml-8 color="#36d7b7" '>
+      <nav className='py-4 flex justify-between items-center'>
         <Link to="/">
           <img src="/logo.png" alt=' hirrd logo' className="h-20" />
         </Link>
 
         <div className='flex gap-8'>
           <SignedOut>
-            <Button variant="outline" onClick={() => setShowSignIn(true)} className="mr-10 sm:mr-0">
+            <Button variant="outline" onClick={() => setShowSignIn(true)}>
               Login
             </Button>
           </SignedOut>
@@ -52,7 +52,7 @@ const Header = () => {
             <UserButton
               appearance={{
                 elements: {
-                  avatarBox: "w-10 h-10 mr-7 sm:mr-0",
+                  avatarBox: "w-10 h-10",
                 },
               }}
             >

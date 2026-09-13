@@ -25,7 +25,7 @@ const CreatedApplications = () => {
     return <BarLoader className=" mb-10 ml-10" width={"100%"} color="#36d7b7" />;
   }
   return (
-    <div className="flex flex-col gap-2 ml-10">
+    <div className="flex flex-col gap-2">
     {applications?.map((application) => {
       return (
         <ApplicationCard
